@@ -6,6 +6,7 @@ import model.Blog;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDate;
+import java.util.List;
 
 public class BlogService implements IService<Blog>{
     private BlogDAO blogDAO;
@@ -36,13 +37,12 @@ public class BlogService implements IService<Blog>{
     }
 
     @Override
-    public void selectAll(HttpServletRequest req, HttpServletResponse resp) {
-
+    public List<Blog> selectAll(HttpServletRequest req, HttpServletResponse resp) {
+        return null;
     }
 
     @Override
-    public void selectOne(HttpServletRequest req, HttpServletResponse resp) {
-
+    public Blog selectOne(HttpServletRequest req, HttpServletResponse resp) {
+        return null;
     }
-
 }

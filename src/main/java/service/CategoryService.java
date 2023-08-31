@@ -4,6 +4,7 @@ import model.Category;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 public class CategoryService implements IService<Category>{
     @Override
@@ -22,12 +23,12 @@ public class CategoryService implements IService<Category>{
     }
 
     @Override
-    public void selectAll(HttpServletRequest req, HttpServletResponse resp) {
-
+    public List<Category> selectAll(HttpServletRequest req, HttpServletResponse resp) {
+        return null;
     }
 
     @Override
-    public void selectOne(HttpServletRequest req, HttpServletResponse resp) {
-
+    public Category selectOne(HttpServletRequest req, HttpServletResponse resp) {
+        return null;
     }
 }
