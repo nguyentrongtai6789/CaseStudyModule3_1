@@ -1,10 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
-  <style></style>
+    <title>Danh sách Blog</title>
 </head>
 <body>
+<h1>Danh Sách Các Blog</h1>
 
 </body>
 </html>
+
