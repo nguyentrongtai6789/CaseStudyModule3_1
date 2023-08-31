@@ -1,7 +1,9 @@
 package service;
 
 import DAO.AccountDAO;
+import DAO.RoleDAO;
 import model.Account;
+import model.Role;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +11,7 @@ import java.util.List;
 
 public class AccountService implements IService<Account>{
     AccountDAO accountDAO = new AccountDAO();
+    RoleDAO roleDAO = new RoleDAO();
     @Override
     public void insert(HttpServletRequest req, HttpServletResponse resp) {
         String name = req.getParameter("name");
@@ -19,7 +22,8 @@ public class AccountService implements IService<Account>{
         String address = req.getParameter("address");
         boolean status = true;
         int idRole = 1;
-        Account account = new Account(name, username, passwork, phoneNumber, email, address, status, idRole);
+        Role role = roleDAO.selectOne(idRole);
+        Account account = new Account(name, username, passwork, phoneNumber, email, address, status, role);
         accountDAO.insert(account);
     }
 

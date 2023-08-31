@@ -14,7 +14,7 @@
 <form action="../../account" method="post">
     <input type="text" placeholder="Tài khoản" name="username"><br>
     <input type="password" placeholder="Mật khẩu" name="password"><br>
-    <button>Đăng Nhập</button><br>
+    <input type="submit" value="Đăng Nhập"><br>
     <a href="register.jsp">Bạn chưa có tài khoản?</a>
 </form>
 </body>

@@ -11,7 +11,7 @@
     <title>Đăng ký</title>
 </head>
 <body>
-<form action="" method="post">
+<form action="../../account" method="post">
     <div>
         <input type="text" name="name" placeholder="Họ và tên"><br>
         <small></small>
@@ -29,7 +29,7 @@
         <small></small>
     </div>
     <div>
-        <input type="number" name="numberphone" placeholder="Số điện thoại"><br>
+        <input type="number" name="text" placeholder="Số điện thoại"><br>
         <small></small>
     </div>
     <div>
@@ -41,12 +41,11 @@
         <small></small>
     </div>
     <div>
-        <button>Đăng Ký</button>
+        <input type="submit" value="Đăng Ký">
     </div>
     <div>
         <a href="login.jsp">Tôi đã có tài khoản</a>
     </div>
-    <div></div>
 </form>
 </body>
 </html>

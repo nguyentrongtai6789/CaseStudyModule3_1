@@ -59,7 +59,7 @@ public class AccountDAO implements I_DAO<Account>{
             preparedStatement.setString(5, account.getEmail());
             preparedStatement.setString(6, account.getAddress());
             preparedStatement.setBoolean(7, account.isStatus());
-            //preparedStatement.set(8, account.getRole());
+            preparedStatement.setInt(8, account.getRole().getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

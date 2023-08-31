@@ -23,12 +23,17 @@ public class AccountServlet extends HttpServlet {
             action = "";
         }
         switch (action){
+            case "create":
+                insertNewAccount(request, response);
             default:
                 checkAccount(request, response);
                 break;
         }
     }
 
+    // cần sửa khi lấy được code của home
+    // có thể phân quyền trong này
+    // set phiên đăng nhập cho account
     public void checkAccount(HttpServletRequest req, HttpServletResponse res){
         Account account = null;
         account = accountService.selectOne(req, res);
@@ -47,5 +52,9 @@ public class AccountServlet extends HttpServlet {
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    public void insertNewAccount(HttpServletRequest request, HttpServletResponse response){
+        accountService.insert(request, response);
     }
 }
