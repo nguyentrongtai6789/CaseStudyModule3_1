@@ -19,7 +19,7 @@ public class MyConnection {
         Connection connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            String URL = "jdbc:mysql://localhost:3306/CaseStudyModule3";
+            String URL = "jdbc:mysql://localhost:3306/CaseStudyModule3_1";
             String username = "root";
             String password = "1234567890";
             connection = DriverManager.getConnection(URL, username, password);

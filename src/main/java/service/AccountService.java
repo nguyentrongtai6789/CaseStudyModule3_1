@@ -1,5 +1,6 @@
 package service;
 
+import DAO.AccountDAO;
 import model.Account;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public class AccountService implements IService<Account>{
+    AccountDAO accountDAO = new AccountDAO();
     @Override
     public void insert(HttpServletRequest req, HttpServletResponse resp) {
 
@@ -23,12 +25,18 @@ public class AccountService implements IService<Account>{
     }
 
     @Override
-    public List<Account> selectAll(HttpServletRequest req, HttpServletResponse resp) {
-        return null;
-    }
+    public List<Account> selectAll(HttpServletRequest req, HttpServletResponse resp) {return null;}
 
     @Override
     public Account selectOne(HttpServletRequest req, HttpServletResponse resp) {
+        List<Account> accounts = accountDAO.selectAll();
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        for(Account account : accounts){
+            if(account.getUsername().equals(username) && account.getPassword().equals(password)){
+                return account;
+            }
+        }
         return null;
     }
 }
