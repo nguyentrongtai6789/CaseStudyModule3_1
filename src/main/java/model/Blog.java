@@ -7,26 +7,26 @@ public class Blog {
     private String title;
     private String content;
     private LocalDate create_at;
-    private int id_category;
-    private int id_account;
+    private Category category;
+    private Account account;
 
-    public Blog(String title, String content, LocalDate create_at, int id_category,
-                int id_account) {
+    public Blog(String title, String content, LocalDate create_at, Category category,
+                Account account) {
         this.title = title;
         this.content = content;
         this.create_at = create_at;
-        this.id_category = id_category;
-        this.id_account = id_account;
+        this.category = category;
+        this.account = account;
     }
 
     public Blog(int id, String title, String content, LocalDate create_at,
-                int id_category, int id_account) {
+                Category category, Account account) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.create_at = create_at;
-        this.id_category = id_category;
-        this.id_account = id_account;
+        this.category = category;
+        this.account = account;
     }
 
     public int getId() {
@@ -61,19 +61,19 @@ public class Blog {
         this.create_at = create_at;
     }
 
-    public int getId_category() {
-        return id_category;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setId_category(int id_category) {
-        this.id_category = id_category;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-    public int getId_account() {
-        return id_account;
+    public Account getAccount() {
+        return this.account;
     }
 
-    public void setId_account(int id_account) {
-        this.id_account = id_account;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }

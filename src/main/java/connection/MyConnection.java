@@ -19,9 +19,13 @@ public class MyConnection {
         Connection connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
+<<<<<<< HEAD
             String URL = "jdbc:mysql://localhost:3306/CaseStudyModule3_1";
+=======
+            String URL = "jdbc:mysql://localhost:3306/casestudymodule3_1";
+>>>>>>> 960573b143463020cb734918fbea135b6c545946
             String username = "root";
-            String password = "1234567890";
+            String password = "123456";
             connection = DriverManager.getConnection(URL, username, password);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

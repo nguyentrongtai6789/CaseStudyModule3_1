@@ -15,7 +15,11 @@ public class Account {
     private Role role;
 
     public Account(String name, String username, String password, String phone,
+<<<<<<< HEAD
                    String email, String address, boolean status, Role id_role) {
+=======
+                   String email, String address, boolean status, Role role) {
+>>>>>>> 960573b143463020cb734918fbea135b6c545946
         this.name = name;
         this.username = username;
         this.password = password;
@@ -23,11 +27,19 @@ public class Account {
         this.email = email;
         this.address = address;
         this.status = status;
+<<<<<<< HEAD
         this.role = id_role;
     }
 
     public Account(int id, String name, String username, String password, String phone,
                    String email, String address, boolean status, Role id_role) {
+=======
+        this.role = role;
+    }
+
+    public Account(int id, String name, String username, String password, String phone,
+                   String email, String address, boolean status, Role role) {
+>>>>>>> 960573b143463020cb734918fbea135b6c545946
         this.id = id;
         this.name = name;
         this.username = username;
@@ -37,6 +49,8 @@ public class Account {
         this.address = address;
         this.status = status;
         this.role = id_role;
+        this.role = role;
+
     }
 
     public int getId() {
@@ -103,11 +117,20 @@ public class Account {
         this.status = status;
     }
 
+<<<<<<< HEAD
     public Role getRole() {
         return role;
     }
 
     public void setRole(Role id_role) {
         this.role = id_role;
+=======
+    public Role role() {
+        return role;
+    }
+
+    public void setId_role(Role role) {
+        this.role = role;
+>>>>>>> 960573b143463020cb734918fbea135b6c545946
     }
 }
