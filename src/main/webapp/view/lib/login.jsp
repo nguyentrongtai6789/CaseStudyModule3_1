@@ -8,13 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Login</title>
+    <title>Đăng nhập</title>
 </head>
 <body>
 <form action="../../account" method="post">
     <input type="text" placeholder="Tài khoản" name="username"><br>
     <input type="password" placeholder="Mật khẩu" name="password"><br>
-    <button>Đăng nhập</button><br>
+    <button>Đăng Nhập</button><br>
     <a href="register.jsp">Bạn chưa có tài khoản?</a>
 </form>
 </body>

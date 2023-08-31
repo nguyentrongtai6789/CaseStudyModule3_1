@@ -2,6 +2,7 @@ package DAO;
 
 import connection.MyConnection;
 import model.Account;
+import model.Role;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,8 +13,9 @@ import java.util.List;
 
 public class AccountDAO implements I_DAO<Account>{
     private static final Long Serial = 1L;
+    RoleDAO roleDAO = new RoleDAO();
     private final String SELECT_ACCOUNT ="select * from account";
-    private final String INSERT_ACCOUNT ="";
+    private final String INSERT_ACCOUNT ="insert into account(name, username, password, phone, email,address, status, id_role) value(?, ?, ?, ?, ?, ?, ?, ?);";
 
     private final Connection connection = MyConnection.getInstance();
     @Override
@@ -31,7 +33,8 @@ public class AccountDAO implements I_DAO<Account>{
                 String email = resultSet.getString(6);
                 String address = resultSet.getString(7);
                 Boolean status = resultSet.getBoolean(8);
-                int role = resultSet.getInt(9);
+                int idRole = resultSet.getInt(9);
+                Role role = roleDAO.selectOne(idRole);
                 account = new Account(id,name,username,password,phone,email,address,status,role);
                 accountList.add(account);
             }
@@ -48,7 +51,19 @@ public class AccountDAO implements I_DAO<Account>{
 
     @Override
     public void insert(Account account) {
-
+        try(PreparedStatement preparedStatement = connection.prepareStatement(INSERT_ACCOUNT)){
+            preparedStatement.setString(1, account.getName());
+            preparedStatement.setString(2, account.getUsername());
+            preparedStatement.setString(3, account.getPassword());
+            preparedStatement.setString(4, account.getPhone());
+            preparedStatement.setString(5, account.getEmail());
+            preparedStatement.setString(6, account.getAddress());
+            preparedStatement.setBoolean(7, account.isStatus());
+            //preparedStatement.set(8, account.getRole());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

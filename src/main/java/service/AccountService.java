@@ -11,7 +11,16 @@ public class AccountService implements IService<Account>{
     AccountDAO accountDAO = new AccountDAO();
     @Override
     public void insert(HttpServletRequest req, HttpServletResponse resp) {
-
+        String name = req.getParameter("name");
+        String username = req.getParameter("username");
+        String passwork = req.getParameter("password");
+        String phoneNumber = req.getParameter("phoneNumber");
+        String email = req.getParameter("email");
+        String address = req.getParameter("address");
+        boolean status = true;
+        int idRole = 1;
+        Account account = new Account(name, username, passwork, phoneNumber, email, address, status, idRole);
+        accountDAO.insert(account);
     }
 
     @Override
