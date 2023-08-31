@@ -44,18 +44,18 @@
 <div style="text-align: center">
     <h2>Danh sách các bài đăng của bạn</h2>
 </div>
-<table>
-    <tr>
-        <td>Tiêu đề bài viết</td>
-        <td>Nội dung bài viết</td>
-    </tr>
-    <c:forEach var="blog" items="blogList">
-        <tr>
-            <td><c:out value="${blog.getTittle()}"/></td>
-            <td><c:out value="${blog.getContent()}"/></td>
-        </tr>
-    </c:forEach>
-</table>
+
+<c:forEach items="${blogList}" var="blog">
+    <div>
+        <h3> <c:out value="${blog.getTitle()}"/></h3>
+    </div>
+    <div>
+        <c:out value="${blog.getContent()}"/>
+    </div>
+    <hr>
+    <p></p>
+</c:forEach>
+
 
 <%
     String message = (String) session.getAttribute("message");
