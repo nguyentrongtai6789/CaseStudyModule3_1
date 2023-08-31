@@ -4,6 +4,7 @@ import model.Role;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 public class RoleService implements IService<Role>{
 
@@ -23,12 +24,12 @@ public class RoleService implements IService<Role>{
     }
 
     @Override
-    public void selectAll(HttpServletRequest req, HttpServletResponse resp) {
-
+    public List<Role> selectAll(HttpServletRequest req, HttpServletResponse resp) {
+        return null;
     }
 
     @Override
-    public void selectOne(HttpServletRequest req, HttpServletResponse resp) {
-
+    public Role selectOne(HttpServletRequest req, HttpServletResponse resp) {
+        return null;
     }
 }

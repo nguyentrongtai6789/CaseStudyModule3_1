@@ -4,6 +4,7 @@ import model.Comment;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 public class CommentService implements IService<Comment>{
     @Override
@@ -22,12 +23,12 @@ public class CommentService implements IService<Comment>{
     }
 
     @Override
-    public void selectAll(HttpServletRequest req, HttpServletResponse resp) {
-
+    public List<Comment> selectAll(HttpServletRequest req, HttpServletResponse resp) {
+        return null;
     }
 
     @Override
-    public void selectOne(HttpServletRequest req, HttpServletResponse resp) {
-
+    public Comment selectOne(HttpServletRequest req, HttpServletResponse resp) {
+        return null;
     }
 }

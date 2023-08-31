@@ -2,6 +2,7 @@ package controller;
 
 import model.Account;
 import model.Blog;
+import service.AccountService;
 import service.BlogService;
 
 import javax.servlet.RequestDispatcher;
@@ -16,10 +17,12 @@ import java.time.LocalDate;
 @WebServlet(name = "TestServlet", urlPatterns = "/blogs")
 public class BlogServlet extends HttpServlet {
     private BlogService blogService;
+    private AccountService accountService;
 
     @Override
     public void init() throws ServletException {
         blogService = new BlogService();
+        accountService = new AccountService();
     }
 
     @Override
@@ -44,7 +47,7 @@ public class BlogServlet extends HttpServlet {
 
     private void showFormCreateBlog(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id_account = Integer.parseInt(req.getParameter("id_account"));
-        // Account account = accountDAO.selectOne(id_account);
+        Account account = accountService.selectOne(req, resp);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("view/formCreateBlog.jsp");
         requestDispatcher.forward(req, resp);
     }
