@@ -4,6 +4,7 @@ import model.Img_blog;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 public class Img_blog_service implements IService<Img_blog>{
     @Override
@@ -22,12 +23,12 @@ public class Img_blog_service implements IService<Img_blog>{
     }
 
     @Override
-    public void selectAll(HttpServletRequest req, HttpServletResponse resp) {
-
+    public List<Img_blog> selectAll(HttpServletRequest req, HttpServletResponse resp) {
+        return null;
     }
 
     @Override
-    public void selectOne(HttpServletRequest req, HttpServletResponse resp) {
-
+    public Img_blog selectOne(HttpServletRequest req, HttpServletResponse resp) {
+        return null;
     }
 }

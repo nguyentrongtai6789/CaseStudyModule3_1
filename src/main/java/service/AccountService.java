@@ -4,6 +4,7 @@ import model.Account;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 public class AccountService implements IService<Account>{
     @Override
@@ -22,12 +23,12 @@ public class AccountService implements IService<Account>{
     }
 
     @Override
-    public void selectAll(HttpServletRequest req, HttpServletResponse resp) {
-
+    public List<Account> selectAll(HttpServletRequest req, HttpServletResponse resp) {
+        return null;
     }
 
     @Override
-    public void selectOne(HttpServletRequest req, HttpServletResponse resp) {
-
+    public Account selectOne(HttpServletRequest req, HttpServletResponse resp) {
+        return null;
     }
 }
