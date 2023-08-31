@@ -16,6 +16,7 @@ import java.time.LocalDate;
 @WebServlet(name = "TestServlet", urlPatterns = "/blogs")
 public class BlogServlet extends HttpServlet {
     private BlogService blogService;
+
     @Override
     public void init() throws ServletException {
         blogService = new BlogService();
@@ -54,19 +55,16 @@ public class BlogServlet extends HttpServlet {
         if (action == null) {
             action = "";
         }
-        try {
-            switch (action) {
-                case "createBlog":
-                    createBlog(req, resp);
-                    break;
 
-            }
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
+        switch (action) {
+            case "createBlog":
+                createBlog(req, resp);
+                break;
+
         }
     }
 
     private void createBlog(HttpServletRequest req, HttpServletResponse resp) {
-      blogService.insertBlog(req, resp);
+        blogService.insert(req, resp);
     }
 }
