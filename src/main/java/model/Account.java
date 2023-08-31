@@ -12,10 +12,10 @@ public class Account {
     private String email;
     private String address;
     private boolean status;
-    private int id_role;
+    private Role role;
 
     public Account(String name, String username, String password, String phone,
-                   String email, String address, boolean status, int id_role) {
+                   String email, String address, boolean status, Role role) {
         this.name = name;
         this.username = username;
         this.password = password;
@@ -23,11 +23,11 @@ public class Account {
         this.email = email;
         this.address = address;
         this.status = status;
-        this.id_role = id_role;
+        this.role = role;
     }
 
     public Account(int id, String name, String username, String password, String phone,
-                   String email, String address, boolean status, int id_role) {
+                   String email, String address, boolean status, Role role) {
         this.id = id;
         this.name = name;
         this.username = username;
@@ -36,7 +36,7 @@ public class Account {
         this.email = email;
         this.address = address;
         this.status = status;
-        this.id_role = id_role;
+        this.role = role;
     }
 
     public int getId() {
@@ -103,11 +103,11 @@ public class Account {
         this.status = status;
     }
 
-    public int getId_role() {
-        return id_role;
+    public Role role() {
+        return role;
     }
 
-    public void setId_role(int id_role) {
-        this.id_role = id_role;
+    public void setId_role(Role role) {
+        this.role = role;
     }
 }
