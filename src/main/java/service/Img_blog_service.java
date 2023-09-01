@@ -1,5 +1,6 @@
 package service;
 
+import DAO.ImgDAO;
 import model.Img_blog;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,6 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public class Img_blog_service implements IService<Img_blog>{
+    private ImgDAO imgDAO;
+
+    public Img_blog_service() {
+        imgDAO = new ImgDAO();
+    }
+
     @Override
     public void insert(HttpServletRequest req, HttpServletResponse resp) {
 
@@ -24,7 +31,8 @@ public class Img_blog_service implements IService<Img_blog>{
 
     @Override
     public List<Img_blog> selectAll(HttpServletRequest req, HttpServletResponse resp) {
-        return null;
+        List<Img_blog> imgBlogList = imgDAO.selectAll();
+        return imgBlogList;
     }
 
     @Override

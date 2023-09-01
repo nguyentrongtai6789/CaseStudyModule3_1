@@ -10,53 +10,86 @@
 <html>
 <head>
     <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <style>
+        #imgBlogListByUser {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div>
+            <table>
+                <tr>
+                    <td>TÀI KHOẢN:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><a href="">
+                        <button class="btn btn-outline-success">ĐĂNG XUẤT</button>
+                    </a></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 150px">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <table>
-                        <tr>
-                            <td>Tài khoản:</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><a href="products">
-                                <button class="btn btn-outline-success">Đăng xuất</button>
-                            </a></td>
-                            <td></td>
-                        </tr>
-                    </table>
+                    <a class="nav-link active" aria-current="page" href="#">TRANG CHỦ</a>
                 </li>
-                <li></li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">XEM BÀI ĐĂNG THEO DANH MỤC</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        DANH MỤC
+                    </a>
+                    <ul class="dropdown-menu">
+                        <c:forEach items="${categoryList}" var="category">
+                            <li><a class="dropdown-item" href="blogs?action=showBlogByCategory&&id_category=${category.getId()}&&id_account=1">${category.getName()}</a></li>
+                        </c:forEach>
+                    </ul>
+                </li>
             </ul>
-            <form class="d-flex" role="search" method="post" action="">
-                <input class="form-control me-2" type="" placeholder="Search" aria-label="Search" name="name_product">
-                <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
     </div>
 </nav>
-
-<div style="text-align: center">
-    <h2>Danh sách các bài đăng của bạn</h2>
+<div style="text-align: center; margin-top: 50px; margin-bottom: 30px">
+    <h2>DANH SÁCH BÀI ĐĂNG CỦA BẠN</h2>
 </div>
-
 <c:forEach items="${blogList}" var="blog">
-    <div>
-        <h3> <c:out value="${blog.getTitle()}"/></h3>
+    <div style="display: flex">
+        <div style="flex: 1;"></div>
+        <div style="flex: 2; text-align: center; align-items: center;">
+            <div>
+                <h3><c:out value="${blog.getTitle()}"/></h3>
+            </div>
+            <div>
+                <c:forEach items="${imgBlogList}" var="img">
+                    <c:if test="${blog.getId() == img.getId_blog()}">
+                        <img src="${img.getUrl_image()}" alt="Không có ảnh!!!" id="imgBlogListByUser">
+                    </c:if>
+                </c:forEach>
+
+            </div>
+            <div><c:out value="${blog.getContent()}"/></div>
+            <hr>
+            <br>
+        </div>
+        <div style="flex: 1;"></div>
     </div>
-    <div>
-        <c:out value="${blog.getContent()}"/>
-    </div>
-    <hr>
-    <p></p>
+
 </c:forEach>
-
-
 <%
     String message = (String) session.getAttribute("message");
 %>
@@ -68,5 +101,8 @@
 <%
     session.removeAttribute("message");
 %>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 </body>
 </html>

@@ -10,6 +10,9 @@
 <html>
 <head>
     <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
 </head>
 <body onload="">
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -35,9 +38,10 @@
 </nav>
 <div style="text-align: center">
     <h2>Bạn đang tạo một blog</h2>
-    <a href="blogs?action=showListBlogByUser&&id_account=1"><button type="button">Xem blog mà bạn đã đăng</button></a>
+    <a href="blogs?action=showListBlogByUser&&id_account=1"><button type="button" class="btn btn-outline-success">Xem blog mà bạn đã đăng</button></a>
 </div>
-<form method="post" action="blogs?action=createBlog">
+<form method="post" action="blogs?action=createBlog" enctype="multipart/form-data" style="width: 700px; height: 500px;
+margin: auto">
     <table class="table table-hover">
         <tr>
             <th>Nhập tiêu đề của blog:</th>
@@ -48,13 +52,13 @@
         <tr>
             <th>Nhập nội dung của blog:</th>
             <td>
-                <input class="form-control" type="text" name="content" size="45"/>
+                <textarea rows="4" cols="50" name="content" class="form-control"></textarea>
             </td>
         </tr>
         <tr>
             <th>Lựa chọn danh mục của blog:</th>
             <td>
-                <select name="id_category">
+                <select name="id_category" class="form-control">
                     <c:forEach items="${categoryList}" var="category">
                         <option value="${category.getId()}">${category.getName()}</option>
                     </c:forEach>
@@ -70,7 +74,7 @@
         <tr>
             <th>Chọn ảnh cho bài viết của bạn:</th>
             <td>
-                <input type="file" name="url_image" onchange="" accept="image/gif, image/jpeg, image/png">
+                <input type="file" name="url_image" onchange="" accept="image/gif, image/jpeg, image/png" class="form-control">
             </td>
         </tr>
         <tr>
@@ -79,11 +83,9 @@
                 <input class="form-control" type="number" name="id_account" size="45"/>
             </td>
         </tr>
-        <tr>
-            <td colspan="2"></td>
-            <button type="submit">Đăng blog</button>
-        </tr>
     </table>
+    <div style="text-align: center;"><button type="submit" class="btn btn-outline-success">Đăng blog</button></div>
+
 </form>
 <%
     String message = (String) session.getAttribute("message");

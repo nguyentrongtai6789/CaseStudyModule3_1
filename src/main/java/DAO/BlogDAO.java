@@ -23,6 +23,7 @@ public class BlogDAO implements IBlogDAO {
     private static final String SELECT_ALL_BLOG = "select * from BLOG;";
     private static final String SELECT_MAX_ID = "select max(id) as id from blog";
     private static final String SELECT_BLOG_BY_USER = "select * from blog where id_account = ?";
+
     private final Connection connection = MyConnection.getInstance();
     private CategoryDAO categoryDAO;
     private AccountDAO accountDAO;
@@ -114,16 +115,16 @@ public class BlogDAO implements IBlogDAO {
 
     @Override
     public void insert(Blog blog) {
-//        try (PreparedStatement statement = connection.prepareStatement(INSERT_BLOG_SQL)) {
-//            statement.setString(1, blog.getTitle());
-//            statement.setString(2, blog.getContent());
-//            statement.setObject(3, blog.getCreate_at());
-//            statement.setInt(4, blog.getId_category());
-//            statement.setInt(5, blog.getId_account());
-//            statement.executeUpdate();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        try (PreparedStatement statement = connection.prepareStatement(INSERT_BLOG_SQL)) {
+            statement.setString(1, blog.getTitle());
+            statement.setString(2, blog.getContent());
+            statement.setObject(3, blog.getCreate_at());
+            statement.setInt(4, blog.getCategory().getId());
+            statement.setInt(5, blog.getAccount().getId());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

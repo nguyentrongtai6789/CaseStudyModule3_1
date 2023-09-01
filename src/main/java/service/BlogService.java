@@ -9,10 +9,13 @@ import model.Blog;
 import model.Category;
 import model.Img_blog;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import java.io.IOException;
+import java.net.URLEncoder;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BlogService implements IService<Blog> {
@@ -33,7 +36,7 @@ public class BlogService implements IService<Blog> {
         return blogList;
     }
     @Override
-    public void insert(HttpServletRequest req, HttpServletResponse resp) {
+    public void insert(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String tittle = req.getParameter("tittle");
         String content = req.getParameter("content");
         LocalDate create_at = LocalDate.parse(req.getParameter("create_at"));
@@ -44,9 +47,15 @@ public class BlogService implements IService<Blog> {
         Blog blog = new Blog(tittle, content, create_at, category, account);
         blogDAO.insert(blog); // thêm một blog vào database
         int id_blog = blogDAO.selectMaxId(); // lấy ra id max để tạo đối tượng img
-        String urlImg = req.getParameter("url_image");
-        Img_blog imgBlog = new Img_blog(urlImg, id_blog);
-        imgDAO.insert(imgBlog); // thêm ảnh vào database
+        Part imagePart = req.getPart("url_image");
+        String fileName = imagePart.getSubmittedFileName();
+//        String contextPath = req.getContextPath();
+        // tạo đường dẫn tương đối đến ảnh
+        String relativeUrl = "view\\img\\" + URLEncoder.encode(fileName, "UTF-8");
+//        String absoluteUrl = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() +
+//                relativeUrl;
+        Img_blog imgBlog = new Img_blog(relativeUrl, id_blog);
+        imgDAO.insert(imgBlog); // thêm url ảnh vào database
     }
 
     @Override

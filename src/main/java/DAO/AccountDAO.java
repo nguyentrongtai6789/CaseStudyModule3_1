@@ -17,6 +17,12 @@ public class AccountDAO implements I_DAO<Account>{
     private static final long serialVersionUID = 1L;
     private static final String SELECT_ACCOUNT_BY_ID = "select * from account where id =?;";
     private final Connection connection = MyConnection.getInstance();
+    private RoleDAO roleDAO;
+
+    public AccountDAO() {
+        roleDAO = new RoleDAO();
+    }
+
     @Override
     public List<Account> selectAll() {
         return null;
@@ -37,13 +43,9 @@ public class AccountDAO implements I_DAO<Account>{
                 String email = resultSet.getString("email");
                 String address = resultSet.getString("address");
                 boolean status = resultSet.getBoolean("status");
-//                Role role =
-//                LocalDate date = LocalDate.parse(create_at);
-//                int id_category = resultSet.getInt("id_category");
-//                Category category = categoryDAO.selectOne(id_category);
-//                int id_account = resultSet.getInt("id_account");
-//                Account account = accountDAO.selectOne(id_account);
-//                blog = new Blog(id_select, tittle, content, date, category, account);
+                int id_role = resultSet.getInt("id_role");
+                Role role = roleDAO.selectOne(id_role);
+                account = new Account(id, name, username, password, phone, email, address, status,role);
             }
         } catch (SQLException e) {
             e.printStackTrace();
